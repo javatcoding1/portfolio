@@ -1,0 +1,54 @@
+{
+  "firstName": "Jayanth",
+  "lastName": "Madhav",
+  "displayName": "E Jayanth Madhav",
+  "username": "ejayanthmadhav",
+  "tagline": "Software Development Engineer | AI & Full-Stack",
+  "description": "Software Development Engineer at Cubic specializing in Full-Stack Web Development, AI Automation Agents, and Distributed Systems.",
+  "flipSentences": [
+    "Software Development Engineer",
+    "AI/ML Engineer",
+    "Full Stack Developer",
+    "Open-source Contributor"
+  ],
+  "about": "I'm **E Jayanth Madhav**, a Software Development Engineer at **Cubic** based in Hyderabad, India. I build modern full-stack web platforms, AI agents, and developer tooling. My work spans building release management platforms with Next.js, developing autonomous PR review agents using LLMs on H200 GPUs, and crafting robust end-to-end automation with Playwright.",
+  "jobs": [
+    {
+      "title": "Software Development Engineer",
+      "company": "Cubic",
+      "website": "https://www.cubic.com",
+      "experienceId": "cubic"
+    }
+  ],
+  "location": "Hyderabad, India",
+  "timeZone": "Asia/Kolkata",
+  "avatar": "https://avatars.githubusercontent.com/u/100996407?v=4",
+  "coverImage": "/cozy-room-with-sunset-student.jpg",
+  "email": "jayanthmadhav1@gmail.com",
+  "phone": "+91 9059821227",
+  "pronouns": "he/him/his",
+  "gender": "male",
+  "website": "https://ejayanthmadhav.vercel.app",
+  "githubUsername": "javatcoding1",
+  "twitterUsername": "ejayanthmadhav",
+  "linkedinUsername": "jayanth-madhav",
+  "keywords": [
+    "e jayanth madhav",
+    "jayanth madhav",
+    "software development engineer",
+    "sde",
+    "cubic",
+    "software engineer",
+    "ai/ml engineer",
+    "full stack developer",
+    "next.js",
+    "playwright",
+    "h200",
+    "qwen",
+    "node.js",
+    "postgresql",
+    "aws",
+    "hyderabad"
+  ],
+  "bookingUrl": null
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" shape-rendering="crispEdges">
+  <!-- 8-bit grass tile (light theme). Three tones of green stacked so the pattern
+       reads as grass blades when tiled at small sizes. -->
+  <rect width="32" height="32" fill="#a3d977" />
+  <!-- darker mid-tone soil dots -->
+  <rect x="0"  y="24" width="32" height="4" fill="#86c25a" />
+  <rect x="0"  y="28" width="32" height="4" fill="#6da849" />
+  <!-- grass blades (back layer) -->
+  <rect x="3"  y="14" width="2" height="6" fill="#86c25a" />
+  <rect x="9"  y="10" width="2" height="10" fill="#86c25a" />
+  <rect x="18" y="13" width="2" height="7" fill="#86c25a" />
+  <rect x="25" y="11" width="2" height="9" fill="#86c25a" />
+  <!-- grass blades (front layer, brighter) -->
+  <rect x="6"  y="16" width="2" height="6" fill="#b8e58c" />
+  <rect x="13" y="14" width="2" height="8" fill="#b8e58c" />
+  <rect x="21" y="15" width="2" height="7" fill="#b8e58c" />
+  <rect x="28" y="13" width="2" height="9" fill="#b8e58c" />
+  <!-- tiny pixel flowers / pebbles -->
+  <rect x="15" y="6"  width="2" height="2" fill="#f0d35a" />
+  <rect x="24" y="4"  width="2" height="2" fill="#f5f5f5" />
+</svg>

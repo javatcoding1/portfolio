@@ -1,0 +1,597 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@plugin "@tailwindcss/typography";
+
+/* Match chanhdai — `:where(.dark, .dark *)` matches BOTH the `.dark`
+   element itself (`<html class="dark">`) and all its descendants. The
+   previous `(&:is(.dark *))` only matched descendants, so any `dark:` style
+   placed directly on the html element silently failed. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+::selection {
+  background-color: #47a3f3;
+  color: #fefefe;
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Grid-line color used by `screen-line-top`, `screen-line-bottom`,
+     `border-line` and `bg-line`. 40% of `--border` blended with 60% of
+     `--background` — lighter than chanhdai's 64% mix so the hairlines
+     read as truly SOFT architectural rules, not competing with panel
+     borders. Together with the `retina:h-[0.5px]` variant on the
+     screen-line utilities below, boundary lines feel like a whisper on
+     high-DPR displays. */
+  --line: color-mix(in oklab, var(--border) 40%, var(--background));
+  /* Quiet hover/highlight wash used by interactive list items. */
+  --accent-muted: oklch(0.97 0 0);
+  /* Accent for "current employer" / "new" dots, used by experience-01. */
+  --info: oklch(0.62 0.18 250);
+
+  /* Layout tokens used by the sticky header + floating mobile bottom-nav.
+     Same names chanhdai uses so future shell variants can reuse them.
+       --header-height : sticky navigation strip height
+       --fade-bottom-height : height of the soft fade behind the mobile
+                              floating nav pill (matches chanhdai's value) */
+  --header-height: --spacing(14);
+  --fade-bottom-height: --spacing(24);
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  /* No `overflow-x: hidden` here — it creates a new scroll container that
+     breaks `position: sticky` on iOS and clips the `screen-line-*` bleed
+     pseudo-elements behind the sticky header. `<main>` and `<header>` carry
+     `overflow-x-clip` instead, which is the chanhdai pattern. */
+}
+
+/* Prose escape hatch: every custom `.prose *` rule below is scoped with
+   `:not(:where(.not-prose, .not-prose *))` so anything inside a `.not-prose`
+   wrapper (TOC, callouts, embeds) opts out of the article typography. */
+.prose a:not(:where(.not-prose, .not-prose *)) {
+  @apply underline transition-colors decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Code blocks — rendered by `rehype-pretty-code` (Shiki).
+   The card chrome (border, rounded corners, copy button) lives in
+   `<CodeShell>` (components/code-shell.tsx). These styles only handle
+   the inner token layout that Shiki emits.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.prose pre {
+  @apply overflow-x-auto bg-transparent py-4 leading-relaxed;
+}
+
+/* Shiki-rendered code blocks emit `data-theme` on the inner <code>. Scope
+   the grid + per-line styles to those so our other code blocks (PM tabs,
+   manually-rendered snippets) keep normal `white-space: pre` behaviour. */
+.prose pre code[data-theme] {
+  @apply grid bg-transparent p-0 font-mono;
+  counter-reset: line;
+}
+
+.prose pre code[data-theme] [data-line] {
+  @apply border-l-2 border-l-transparent px-4;
+}
+
+.prose pre code[data-theme] [data-highlighted-line] {
+  @apply border-l-primary bg-accent/40;
+}
+
+.prose pre code[data-theme] [data-highlighted-chars] {
+  @apply rounded bg-accent px-1;
+}
+
+/* Dual-theme tokens emitted by Shiki when `theme: { light, dark }` is set. */
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+.dark code[data-theme*=" "],
+.dark code[data-theme*=" "] span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
+.prose img:not(:where(.not-prose, .not-prose *)) {
+  @apply m-0;
+}
+
+.prose p:not(:where(.not-prose, .not-prose *)) {
+  @apply my-4 text-neutral-800 dark:text-neutral-200;
+}
+
+/* Left-aligned with smart line balancing. `text-wrap: pretty` re-balances
+   the last few lines of each paragraph to avoid stranded short lines /
+   one-word orphans. Justified text on this column width creates very
+   visible word-spacing rivers (English + ~576px column + no hyphenation
+   = mathematically unavoidable), so we stay ragged-right — the same
+   choice every modern tech blog (Vercel, GitHub, Substack) makes. */
+article.prose p:not(:where(.not-prose, .not-prose *)),
+article.prose li:not(:where(.not-prose, .not-prose *)) {
+  text-align: left;
+  text-wrap: pretty;
+}
+
+/* Heading hierarchy for in-article (`.prose`) content. The post page's
+   h1 lives OUTSIDE the article (rendered by `app/blog/[slug]/page.tsx`),
+   so the in-article scale starts at h2 and steps down clearly:
+
+     h2  topic heading       30px  medium,    big top margin
+     h3  sub-topic           24px  medium,    medium top margin
+     h4  sub-sub-topic       20px  medium,    small top margin
+     h5  detail              18px  medium
+     h6  fine print          16px  medium
+
+   ALL headings use `font-medium` (weight 500) to match the home page
+   section titles (`components/panel.tsx` uses `font-heading text-3xl
+   font-medium`) AND the doc-title h1 (`text-4xl font-medium`). This is
+   also the same pattern the `prose-ncdai` utility encodes via
+   `prose-headings:font-medium`. Using `font-semibold` here previously
+   made blog headings look chunkier than every other heading on the
+   site — the user-visible inconsistency was pure font-weight, not
+   font-family.
+
+   Each level is a step down in size AND a step down in vertical
+   rhythm so the reader feels the structure at a glance. */
+.prose h1:not(:where(.not-prose, .not-prose *)) {
+  @apply text-4xl font-medium tracking-tight mt-10 mb-4;
+}
+
+.prose h2:not(:where(.not-prose, .not-prose *)) {
+  @apply text-3xl font-medium tracking-tight mt-12 mb-4 scroll-mt-20;
+}
+
+.prose h3:not(:where(.not-prose, .not-prose *)) {
+  @apply text-2xl font-medium tracking-tight mt-10 mb-3 scroll-mt-20;
+}
+
+.prose h4:not(:where(.not-prose, .not-prose *)) {
+  @apply text-xl font-medium tracking-tight mt-8 mb-2 scroll-mt-20;
+}
+
+.prose h5:not(:where(.not-prose, .not-prose *)) {
+  @apply text-lg font-medium tracking-tight mt-6 mb-2 scroll-mt-20;
+}
+
+.prose h6:not(:where(.not-prose, .not-prose *)) {
+  @apply text-base font-medium tracking-tight mt-6 mb-2 scroll-mt-20 uppercase text-muted-foreground;
+}
+
+.prose strong:not(:where(.not-prose, .not-prose *)) {
+  @apply font-medium;
+}
+
+.prose ul:not(:where(.not-prose, .not-prose *)) {
+  @apply list-disc pl-6;
+}
+
+.prose ol:not(:where(.not-prose, .not-prose *)) {
+  @apply list-decimal pl-6;
+}
+
+/* Match Tailwind typography's default behaviour: the first child of a
+   `.prose` block should not have a top margin so it lines up flush with
+   whatever the wrapper's `pt-*` says. Without this, `.prose p`'s `my-4`
+   stacks on top of the article's `pt-8` and the description ends up
+   ~48px below the title instead of the intended ~32px (chanhdai's gap). */
+.prose > :first-child:not(:where(.not-prose, .not-prose *)) {
+  margin-top: 0;
+}
+
+/* Same idea on the bottom: the last child shouldn't push the bordered
+   column past the article content. Without this, the column edges drift
+   ~16px below the last paragraph because `.prose p`'s `my-4` sets
+   `margin-bottom: 1rem` on the final `<p>` too. */
+.prose > :last-child:not(:where(.not-prose, .not-prose *)) {
+  margin-bottom: 0;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Thin custom scrollbars for page content */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 5px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+input[type="text"],
+input[type="email"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+table {
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.title {
+  text-wrap: balance;
+}
+
+@theme inline {
+  /* Alias Tailwind's `font-sans` / `font-mono` utilities to the CSS
+     variables that the `geist` package writes onto <html> in `app/layout.tsx`.
+     Without this alias, `font-sans` falls back to the system stack and any
+     `font-mono` (header wordmark, Overview rows, inline `<code>`) renders
+     in OS monospace instead of Geist Mono. */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-geist-sans);
+
+  /* Slashed zero (ss11), proper zero glyph, and tabular numerals for ALL
+     monospace surfaces. This is what makes time / kbd chords / version
+     numbers / period ranges line up consistently across the site — same
+     setting chanhdai uses. */
+  --default-mono-font-feature-settings: "ss11" 1, "zero" 1, "tnum" 1;
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --color-line: var(--line);
+  --color-accent-muted: var(--accent-muted);
+  --color-info: var(--info);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(0.274 0.006 286.033);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+
+  /* Dark mode line/accent-muted/info — same role as the light values.
+     IMPORTANT: `--line` must be a SOLID color (no alpha). The L-shape
+     connector elbows in Experience/Education render `border-l` on top of
+     the parent's `bg-line` vertical line. When both use alpha, the alpha
+     compounds in the overlap region and that pixel column looks darker
+     (matches chanhdai's solid `--border` approach in dark mode). Same
+     64%-of-border / 36%-of-background mix as light mode for visual parity. */
+  --line: color-mix(in oklab, var(--border) 40%, var(--background));
+  --accent-muted: oklch(1 0 0 / 6%);
+  --info: oklch(0.7 0.18 250);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  /* Do NOT set a background on `html` here. Body's `bg-background` only
+     propagates to the viewport canvas when `html` has a transparent
+     background. That propagation is what lets `screen-line-top/bottom`
+     pseudo-elements (z-index: -1) render on top of the canvas instead
+     of being painted under body's opaque background. */
+  html {
+    @apply text-foreground font-sans;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Heading anchors should land BELOW the sticky header, not under it.
+     Chanhdai's global value: `scroll-mt-18` (= 4.5rem = 72px). The header
+     itself is 56px tall, so this leaves ~16px of breathing room. */
+  [id] {
+    @apply scroll-mt-18;
+  }
+}
+
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+
+@utility screen-line-top {
+  @apply relative before:absolute before:top-0 before:left-[-100vw] before:-z-1 before:h-px before:w-[200vw] before:bg-line;
+}
+
+@utility screen-line-bottom {
+  @apply relative after:absolute after:bottom-0 after:left-[-100vw] after:-z-1 after:h-px after:w-[200vw] after:bg-line;
+}
+
+/* Opt-out variants. Used by the LAST item in a stacked-row list so the
+   final row doesn't double-up the next section's top line (chanhdai's
+   pattern — see Experience / Education / Projects / Awards). */
+@utility screen-line-top-none {
+  @apply before:content-none;
+}
+
+@utility screen-line-bottom-none {
+  @apply after:content-none;
+}
+
+/* Full-bleed dashed variants of the screen lines. Used for the section
+   separator between Panels in the chanhdai-style home page (see /v2). */
+@utility screen-dashed-line-top {
+  @apply screen-line-top before:bg-[linear-gradient(to_right,var(--line)_4px,transparent_2px)] before:bg-[length:6px_1px] before:bg-repeat-x before:bg-transparent;
+}
+
+@utility screen-dashed-line-bottom {
+  @apply screen-line-bottom after:bg-[linear-gradient(to_right,var(--line)_4px,transparent_2px)] after:bg-[length:6px_1px] after:bg-repeat-x after:bg-transparent;
+}
+
+/* Diagonal hatch pattern used by `stripe-divider`. The `--pattern-foreground`
+   tone is intentionally muted (line color at 56% opacity) so the pattern
+   reads as texture, not noise. */
+@utility diagonal-stripes {
+  @apply [--pattern-foreground:var(--color-line)] bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-[length:10px_10px];
+}
+
+/* Section divider between Panels — a short, full-bleed strip of the diagonal
+   hatch. Place between sibling `<Panel>`s on the home page. Chanhdai uses
+   `h-(--separator-height)`; we expose `--separator-height` on the page root
+   so individual instances can shrink/grow it. */
+@utility stripe-divider {
+  @apply relative before:absolute before:left-[-100vw] before:-z-1 before:h-full before:w-[200vw] before:diagonal-stripes;
+}
+
+/* Pet companion sprite — used by `components/pet-companion-core.tsx`.
+   Pixel-art sprite, so kill all browser smoothing. The element is
+   transform-positioned absolutely inside the Garden panel. */
+.pet-companion {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  will-change: transform;
+  transition: none;
+}
+
+@keyframes codex-pet-frames {
+  0%,
+  12.499% {
+    background-position: 0 var(--pet-row-y);
+  }
+  12.5%,
+  24.999% {
+    background-position: -48px var(--pet-row-y);
+  }
+  25%,
+  37.499% {
+    background-position: -96px var(--pet-row-y);
+  }
+  37.5%,
+  49.999% {
+    background-position: -144px var(--pet-row-y);
+  }
+  50%,
+  62.499% {
+    background-position: -192px var(--pet-row-y);
+  }
+  62.5%,
+  74.999% {
+    background-position: -240px var(--pet-row-y);
+  }
+  75%,
+  87.499% {
+    background-position: -288px var(--pet-row-y);
+  }
+  87.5%,
+  100% {
+    background-position: -336px var(--pet-row-y);
+  }
+}
+
+/* Radix Collapsible animations — used by Experience / Education / Projects
+   item rows. Radix sets `--radix-collapsible-content-height` on the content
+   so we can animate to/from the natural height. */
+@keyframes collapsible-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+  }
+}
+
+@keyframes collapsible-up {
+  from {
+    height: var(--radix-collapsible-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@theme inline {
+  --animate-collapsible-down: collapsible-down 0.2s ease-out;
+  --animate-collapsible-up: collapsible-up 0.2s ease-out;
+}
+
+@custom-variant retina {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2x) {
+    @slot;
+  }
+}
+
+@utility link {
+  @apply decoration-1 underline-offset-3 hover:underline;
+}
+
+@utility link-underline {
+  @apply underline decoration-current/30 decoration-1 underline-offset-3 transition-colors hover:decoration-current;
+}
+
+/* Inline `<code>` styling — chanhdai's `code-inline` utility. Used by
+   prose-ncdai (via `prose-code:*`) AND can be applied directly to any
+   inline code chip outside of `.prose` content (e.g. in panel headers,
+   table cells). `retina:border-[0.5px]` keeps the chip hairline crisp on
+   2× displays where 1px would render as 2 device pixels. */
+@utility code-inline {
+  @apply rounded-md border bg-muted/50 px-1 py-px font-mono text-sm font-normal whitespace-pre-wrap retina:border-[0.5px];
+}
+
+/* Numbered step bullet for docs-style ordered lists. Counter increments
+   automatically; the rendered number sits in a 6×6 muted circle in the
+   left gutter (desktop) or inline-left (mobile). Apply to <li> or any
+   block-level step element. */
+@utility step {
+  counter-increment: step;
+  @apply max-md:pl-10;
+
+  &:before {
+    content: counter(step);
+    @apply absolute inline-flex size-6 items-center justify-center rounded-lg bg-muted text-center indent-0 text-[0.8125rem]/6 font-normal text-foreground max-md:left-0 md:-ml-10;
+  }
+}
+
+/* Touch-only hit-target expander — mobile finger taps get a 44px+ target
+   without changing the visual size of icon buttons / pill chips. */
+@utility extend-touch-target {
+  @media (pointer: coarse) {
+    @apply relative touch-manipulation after:absolute after:-inset-2;
+  }
+}
+
+@utility prose-ncdai {
+  @apply prose-headings:font-medium prose-headings:tracking-tight prose-headings:text-pretty md:prose-headings:text-balance;
+  @apply prose-a:font-normal prose-a:wrap-break-word prose-a:text-foreground prose-a:link-underline;
+  @apply prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-1 prose-code:py-px prose-code:text-sm prose-code:font-normal prose-code:before:content-none prose-code:after:content-none retina:prose-code:border-[0.5px];
+  @apply prose-strong:font-medium;
+  @apply prose-blockquote:border-l prose-blockquote:font-normal prose-blockquote:text-muted-foreground prose-blockquote:not-italic prose-blockquote:[&_p:first-of-type]:before:content-none prose-blockquote:[&_p:last-of-type]:after:content-none;
+}
+
+/* CommandDialog search input \u2014 the shadcn `CommandInput` primitive
+   wraps its <input> in an `InputGroup` chip that ships with
+   ``border-input/30 bg-input/30`` styling (a subtle inset pill). Inside
+   the CommandDialog we want the search bar to blend seamlessly into
+   the dialog's popover surface, not read as a separate control. Override
+   both the border and background to transparent so only the icon + text
+   cursor remain visible. Scoped to `[data-slot="command-input-wrapper"]`
+   so this only affects command palettes, not other InputGroup usages. */
+[data-slot="command-input-wrapper"] [data-slot="input-group"] {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}

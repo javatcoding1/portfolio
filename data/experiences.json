@@ -1,0 +1,85 @@
+[
+  {
+    "id": "cubic",
+    "companyName": "Cubic",
+    "companyWebsite": "https://www.cubic.com",
+    "companyLogo": "/cubic-logo.png",
+    "location": "Hyderabad, India",
+    "locationType": "On-site",
+    "isCurrentEmployer": true,
+    "positions": [
+      {
+        "id": "cubic-sde",
+        "title": "Software Development Engineer",
+        "employmentPeriod": { "start": "05.2026" },
+        "employmentType": "Full-time",
+        "description": "- Building a full-stack **Release Management Automation Platform** with **Next.js** and **Node.js**, consolidating multi-program release tracking from scattered Excel sheets into a centralized, real-time dashboard.\n- Developed an autonomous **AI PR Review Agent** for the AI team, deployed on **NVIDIA H200 GPUs (140GB VRAM)** using the **Qwen 40B+** parameter LLM to automate code review, security analysis, and PR summaries.\n- Implemented end-to-end automation test suites using **Playwright**, significantly improving regression testing velocity and CI/CD build reliability.",
+        "skills": [
+          "Next.js",
+          "Node.js",
+          "AI PR Review Agent",
+          "Qwen LLM",
+          "NVIDIA H200",
+          "Playwright",
+          "Automation Testing",
+          "TypeScript",
+          "Release Management",
+          "CI/CD"
+        ],
+        "isExpanded": true
+      }
+    ]
+  },
+  {
+    "id": "helixque",
+    "companyName": "Helixque (HXQlabs)",
+    "companyWebsite": "https://github.com/HXQLabs/HelixQue",
+    "companyLogo": "https://helixque.vercel.app/logo.svg",
+    "location": "Hyderabad, India",
+    "locationType": "Hybrid",
+    "positions": [
+      {
+        "id": "helixque-maintainer",
+        "title": "Maintainer & Core Developer",
+        "employmentPeriod": { "start": "04.2025", "end": "08.2025" },
+        "employmentType": "Open Source / SaaS",
+        "description": "- Architected a scalable 1:1 video networking platform supporting 100+ active users with **Node.js** and **TypeScript**.\n- Optimized **WebRTC** connections via custom TURN/STUN configurations and real-time signaling with **Socket.io**.\n- Led project to 140+ GitHub stars and 1000+ views, implementing CI/CD via **GitHub Actions** for **Vercel** deployment.",
+        "skills": ["Node.js", "TypeScript", "WebRTC", "Socket.io", "TURN/STUN", "GitHub Actions", "CI/CD", "Vercel"],
+        "isExpanded": true
+      }
+    ]
+  },
+  {
+    "id": "coursevita",
+    "companyName": "CourseVita",
+    "location": "Hyderabad, India",
+    "locationType": "On-site",
+    "positions": [
+      {
+        "id": "coursevita-intern",
+        "title": "Full Stack Developer Intern",
+        "employmentPeriod": { "start": "04.2025", "end": "07.2025" },
+        "employmentType": "Internship",
+        "description": "- Migrated legacy React frontend to **Next.js**, optimizing Server-Side Rendering (SSR) and reducing load speeds by 25%.\n- Developed modular API endpoints in **Node.js**, improving content delivery availability for global users.",
+        "skills": ["React", "Next.js", "Node.js", "SSR", "REST APIs", "JavaScript", "TypeScript"],
+        "isExpanded": false
+      }
+    ]
+  },
+  {
+    "id": "edspread",
+    "companyName": "Ed Spread",
+    "location": "Remote",
+    "locationType": "Remote",
+    "positions": [
+      {
+        "id": "edspread-intern",
+        "title": "Web Developer Intern",
+        "employmentPeriod": { "start": "11.2022", "end": "01.2023" },
+        "employmentType": "Internship",
+        "description": "- Built a full-stack Library Management System using **React**, **Node.js**, and **Express**.\n- Implemented REST APIs and **JWT** authentication for user login and book management features.",
+        "skills": ["React", "Node.js", "Express.js", "REST APIs", "JWT", "Authentication", "MongoDB"]
+      }
+    ]
+  }
+]

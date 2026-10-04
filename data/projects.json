@@ -1,0 +1,72 @@
+[
+  {
+    "id": "mri-tumor-detection",
+    "title": "Enhanced MRI Tumor Detection",
+    "period": { "start": "09.2024", "end": "11.2024" },
+    "link": "https://github.com/ejayanthmadhav/mri-tumor-detection",
+    "skills": [
+      "Python",
+      "TensorFlow",
+      "AWS",
+      "Federated Learning",
+      "WCGANs",
+      "EC2",
+      "Auto Scaling",
+      "Computer Vision"
+    ],
+    "description": "Privacy-preserving medical image analysis system with GAN-based synthesis.\n- Designed a privacy-preserving Federated Learning system to process sensitive medical data across distributed nodes.\n- Utilized WCGANs for medical image synthesis, increasing tumor detection accuracy by 18% while maintaining data privacy.\n- Designed a scalable AWS-based architecture using EC2 and Auto Scaling to handle fluctuating image processing workloads.",
+    "isExpanded": true
+  },
+  {
+    "id": "ai-interview-platform",
+    "title": "AI Interview Platform Backend",
+    "period": { "start": "07.2024", "end": "09.2024" },
+    "link": "https://github.com/ejayanthmadhav/ai-interview-backend",
+    "skills": [
+      "Node.js",
+      "PostgreSQL",
+      "Google Gemini API",
+      "NeonDB",
+      "REST APIs",
+      "High-Concurrency",
+      "Microservices"
+    ],
+    "description": "Intelligent evaluation and automated interview processing engine.\n- Integrated Google Gemini API for real-time intelligent evaluation and automated technical question generation.\n- Architected a scalable backend using PostgreSQL (NeonDB) for high-concurrency interview processing.\n- Optimized database queries and API response times, achieving a 35% overall performance improvement.",
+    "isExpanded": true
+  },
+  {
+    "id": "sales-forecasting",
+    "title": "Sales Forecasting System",
+    "period": { "start": "11.2023", "end": "01.2024" },
+    "link": "https://github.com/ejayanthmadhav/sales-forecasting",
+    "skills": [
+      "Python",
+      "ARIMA",
+      "Pandas",
+      "NumPy",
+      "Time-Series Forecasting",
+      "Data Preprocessing",
+      "Machine Learning"
+    ],
+    "description": "Predictive analytics engine for retail demand prediction.\n- Developed an ARIMA time-series model for retail demand prediction, improving accuracy by 25% over baseline methods.\n- Built an automated data preprocessing pipeline to handle outliers and missing values, reducing data noise by 40%."
+  },
+  {
+    "id": "helixque",
+    "title": "HelixQue (HXQLabs)",
+    "period": { "start": "04.2025", "end": "08.2025" },
+    "link": "https://github.com/HXQLabs/HelixQue",
+    "skills": [
+      "Node.js",
+      "TypeScript",
+      "WebRTC",
+      "Socket.io",
+      "GitHub Actions",
+      "CI/CD",
+      "Vercel",
+      "SaaS"
+    ],
+    "description": "A scalable 1:1 video networking and mentorship platform built over 4 months.\n- Architected a scalable 1:1 video networking platform supporting 100+ active users with Node.js and TypeScript.\n- Optimized WebRTC connections via custom TURN/STUN configurations and real-time signaling with Socket.io.\n- Led project to 140+ GitHub stars and 1000+ views, implementing CI/CD via GitHub Actions for Vercel deployment.",
+    "logo": "https://helixque.vercel.app/logo.svg",
+    "isExpanded": true
+  }
+]

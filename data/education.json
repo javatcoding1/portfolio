@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cbit-be",
+    "school": "Chaitanya Bharathi Institute of Technology",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/6/68/Chaitanya_Bharathi_Institute_of_Technology_logo.png",
+    "degree": "B.E.",
+    "fieldOfStudy": "AI and Data Science",
+    "period": { "start": "11.2021", "end": "06.2025" },
+    "description": "- Bachelor of Engineering in Artificial Intelligence and Data Science at CBIT, Hyderabad.\n- Specialized in machine learning models, federated learning architectures, distributed computing, and time-series forecasting.",
+    "skills": [
+      "Artificial Intelligence",
+      "Data Science",
+      "Machine Learning",
+      "Deep Learning",
+      "TensorFlow",
+      "Data Structures",
+      "Algorithms",
+      "Distributed Systems",
+      "Cloud Computing",
+      "Python",
+      "Java",
+      "PostgreSQL"
+    ],
+    "isExpanded": true
+  }
+]

@@ -1,0 +1,36 @@
+[
+  {
+    "id": "springer-pub",
+    "title": "Springer Publication",
+    "prize": "Research Paper",
+    "date": "2024-11",
+    "grade": "Springer Nature",
+    "description": "Published research: \"Enhanced MRI Tumor Detection using Federated Learning and GAN-based Augmentation\" focusing on privacy-preserving medical data synthesis and tumor detection.",
+    "referenceLink": "https://link.springer.com"
+  },
+  {
+    "id": "icict-pub",
+    "title": "ICICT '24 Publication",
+    "prize": "Conference Paper",
+    "date": "2024-02",
+    "grade": "International Conference",
+    "description": "Published research on improving retail time-series forecasting accuracy by 15% through optimized ARIMA models and automated preprocessing.",
+    "referenceLink": "https://icict.net"
+  },
+  {
+    "id": "hacktoberfest-25",
+    "title": "Hacktoberfest '25",
+    "prize": "Super Contributor",
+    "date": "2025-10",
+    "grade": "Open Source Community",
+    "description": "Recognized for high-impact backend contributions, system architecture design, and open-source code reviews."
+  },
+  {
+    "id": "smart-interviews-dsa",
+    "title": "Smart Interviews DSA",
+    "prize": "Advanced Certification",
+    "date": "2024-06",
+    "grade": "Algorithms & System Design",
+    "description": "Advanced certification in Data Structures, Algorithms, and Distributed System Design."
+  }
+]

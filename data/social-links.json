@@ -1,0 +1,17 @@
+[
+  {
+    "name": "GitHub",
+    "href": "https://github.com/javatcoding1",
+    "iconKey": "github"
+  },
+  {
+    "name": "LinkedIn",
+    "href": "https://linkedin.com/in/jayanth-madhav",
+    "iconKey": "linkedin"
+  },
+  {
+    "name": "Email",
+    "href": "mailto:jayanthmadhav1@gmail.com",
+    "iconKey": "mail"
+  }
+]

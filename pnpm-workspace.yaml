@@ -1,0 +1,14 @@
+# pnpm v11 replaced `ignoredBuiltDependencies` with the `allowBuilds`
+# map and now requires every dependency with an install/postinstall
+# script to be explicitly reviewed (strictDepBuilds defaults to true).
+# Both packages are trusted and need their install scripts to set up
+# their prebuilt native bindings, so allow them.
+allowBuilds:
+  sharp: true
+  unrs-resolver: true
+
+# Allow this freshly-published version through pnpm's default
+# minimumReleaseAge (1440 min) supply-chain policy. Remove once
+# fumadocs-core@16.10.6 is older than 24h or a newer patch ships.
+minimumReleaseAgeExclude:
+  - fumadocs-core@16.10.6

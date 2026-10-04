@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" shape-rendering="crispEdges">
+  <!-- 8-bit grass tile (dark theme). Same shapes, darker palette so the
+       garden feels like night-time turf. -->
+  <rect width="32" height="32" fill="#2b3d24" />
+  <rect x="0"  y="24" width="32" height="4" fill="#1f2e1a" />
+  <rect x="0"  y="28" width="32" height="4" fill="#172115" />
+  <rect x="3"  y="14" width="2" height="6" fill="#1f2e1a" />
+  <rect x="9"  y="10" width="2" height="10" fill="#1f2e1a" />
+  <rect x="18" y="13" width="2" height="7" fill="#1f2e1a" />
+  <rect x="25" y="11" width="2" height="9" fill="#1f2e1a" />
+  <rect x="6"  y="16" width="2" height="6" fill="#3f5b34" />
+  <rect x="13" y="14" width="2" height="8" fill="#3f5b34" />
+  <rect x="21" y="15" width="2" height="7" fill="#3f5b34" />
+  <rect x="28" y="13" width="2" height="9" fill="#3f5b34" />
+  <rect x="15" y="6"  width="2" height="2" fill="#a08838" />
+  <rect x="24" y="4"  width="2" height="2" fill="#bababa" />
+</svg>

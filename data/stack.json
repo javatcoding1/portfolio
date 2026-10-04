@@ -1,0 +1,77 @@
+{
+  "techStack": [
+    "Next.js", "React", "TypeScript", "JavaScript", "Python", "Java", "Node.js",
+    "Qwen LLM", "AI PR Review Agents", "NVIDIA H200", "Playwright", "TensorFlow", "Scikit-learn",
+    "Express.js", "Spring Boot", "Socket.io", "WebSockets", "REST APIs",
+    "AWS EC2", "AWS S3", "AWS Lambda", "API Gateway",
+    "PostgreSQL", "NeonDB", "MySQL", "MongoDB", "Redis",
+    "Docker", "GitHub CI/CD", "Git", "Swagger", "Postman", "Vercel"
+  ],
+  "categories": [
+    {
+      "label": "AI & LLM Systems",
+      "items": [
+        { "name": "AI PR Review Agents" },
+        { "name": "Qwen 40B+ LLM" },
+        { "name": "NVIDIA H200 (140GB VRAM)" },
+        { "name": "TensorFlow", "iconKey": "tensorflow" },
+        { "name": "Scikit-learn", "iconKey": "scikitlearn" },
+        { "name": "Federated Learning" }
+      ]
+    },
+    {
+      "label": "Frontend & Web",
+      "items": [
+        { "name": "Next.js", "iconKey": "nextdotjs" },
+        { "name": "React", "iconKey": "react" },
+        { "name": "TypeScript", "iconKey": "typescript" },
+        { "name": "JavaScript", "iconKey": "javascript" },
+        { "name": "Tailwind CSS", "iconKey": "tailwindcss" }
+      ]
+    },
+    {
+      "label": "Backend & Testing",
+      "items": [
+        { "name": "Node.js", "iconKey": "nodedotjs" },
+        { "name": "Playwright" },
+        { "name": "Express.js", "iconKey": "express" },
+        { "name": "Spring Boot", "iconKey": "springboot" },
+        { "name": "Socket.io", "iconKey": "socketdotio" },
+        { "name": "Python", "iconKey": "python" },
+        { "name": "Java", "iconKey": "openjdk" }
+      ]
+    },
+    {
+      "label": "Cloud & Infra",
+      "items": [
+        { "name": "AWS EC2" },
+        { "name": "AWS S3" },
+        { "name": "AWS Lambda" },
+        { "name": "API Gateway" },
+        { "name": "Auto-scaling" }
+      ]
+    },
+    {
+      "label": "Databases",
+      "items": [
+        { "name": "PostgreSQL", "iconKey": "postgresql" },
+        { "name": "NeonDB" },
+        { "name": "MySQL", "iconKey": "mysql" },
+        { "name": "MongoDB", "iconKey": "mongodb" },
+        { "name": "Redis (Caching)", "iconKey": "redis" }
+      ]
+    },
+    {
+      "label": "Tools & CI/CD",
+      "items": [
+        { "name": "Docker", "iconKey": "docker" },
+        { "name": "GitHub (CI/CD)", "iconKey": "github" },
+        { "name": "Git", "iconKey": "git" },
+        { "name": "Release Management Automation" },
+        { "name": "Swagger / OpenAPI", "iconKey": "swagger" },
+        { "name": "Postman", "iconKey": "postman" },
+        { "name": "Vercel", "iconKey": "vercel" }
+      ]
+    }
+  ]
+}
