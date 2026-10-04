@@ -35,7 +35,7 @@ export const META_THEME_COLORS = {
 /** GitHub repo that hosts THIS site's source code. */
 export const SOURCE_CODE = {
   owner: PROFILE.githubUsername,
-  name: "portfolio-updated",
+  name: "portfolio",
   get url() {
     return `https://github.com/${this.owner}/${this.name}`;
   },
